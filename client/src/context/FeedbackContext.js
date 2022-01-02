@@ -40,12 +40,14 @@ export const FeedbackProvider = ({ children }) => {
   }
 
   // UPDATE feedback
-  const updateFeedback = async (_id, updItem) => {
+  const updateFeedback = async (_id, updItem,token) => {
     
    await fetch(`${baseUrl}/api/feedbacks/${_id}`,{
       method: 'PUT',
        headers: {
         'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+      
       },
       body: JSON.stringify(updItem) 
     })
@@ -69,9 +71,16 @@ export const FeedbackProvider = ({ children }) => {
   }
 
   // DELETE feedback
-  const feedbackDelete = async (_id) => {
+  const feedbackDelete = async (_id,token) => {
     if (window.confirm('Are you sure you want to delete this feedback?')) {
-      await fetch(`${baseUrl}/api/feedbacks/${_id}`, { method: 'DELETE' })
+      await fetch(`${baseUrl}/api/feedbacks/${_id}`, { 
+        method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+
+      },
+    })
       setFeedback(feedbacks.filter((item) => item._id !== _id))
     }
   }

@@ -51,10 +51,5 @@ app.get('/api/achivements', authenticated, (req, res) => {
   res.send({achivements:'first blood'} );
   console.log(req.user)
 });
-
-app.get('/api/achived', authenticated, (req, res) => {
-  res.send({achivements:'first blood'} );
-  console.log('/achivements route')
-});
 app.use('/api/achivements',achivementsRoute)
 app.use('/api/feedbacks',feedbackRoute);

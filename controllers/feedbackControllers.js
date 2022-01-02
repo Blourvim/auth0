@@ -1,14 +1,15 @@
 import Feedback from '../models/feedbackModel.js';
 
 export const createFeedback = async(req,res) =>{
-    console.log('req.body')
-    console.log(req.body)
+
+    const user = await req.user.sub
+console.log(typeof(req.user.sub))
 
 const {rating,text} = req.body
 const doc = await Feedback.create({
 rating,
 text,
-user:req.user._id
+user
 })
 
 res.json(doc)

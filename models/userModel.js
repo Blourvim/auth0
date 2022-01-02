@@ -7,4 +7,4 @@ createdAt: { type: Date, default: Date.now },
 achivements:[String],
 })
 
-export default mongoose.model('User', UserSchema);
+export default mongoose.model('User', userSchema);

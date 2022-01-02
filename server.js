@@ -47,9 +47,6 @@ app.use(bodyParser.json())
 
 
 // Routes
-app.get('/api/achivements', authenticated, (req, res) => {
-  res.send({achivements:'first blood'} );
-  console.log(req.user)
-});
+
 app.use('/api/achivements',achivementsRoute)
 app.use('/api/feedbacks',feedbackRoute);

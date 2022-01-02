@@ -6,11 +6,12 @@ import express from 'express';
 const app = express()
 import feedbackRoute from './routes/feedbackRoute.js';
 import achivementsRoute from './routes/achivementsRoute.js'
-
 import axios from 'axios';
 import mongoose from 'mongoose';
-import authenticated from './middleware/security.js';
 
+// MIDDLEWARE
+import authenticated from './middleware/security.js';
+import bodyParser from 'body-parser';
 // CORS
 import cors from 'cors';
 const origin = process.env.CORS || 'http://localhost:3000';
@@ -31,7 +32,11 @@ mongoose.connection.once("open", function() {
     
   });
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
 
+// parse application/json
+app.use(bodyParser.json())
   app.use((err, req, res, next) => {
     if (err.name === 'UnauthorizedError') {
       console.error('Request without valid token');

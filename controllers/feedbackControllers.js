@@ -1,6 +1,9 @@
 import Feedback from '../models/feedbackModel.js';
 
 export const createFeedback = async(req,res) =>{
+    console.log('req.body')
+    console.log(req.body)
+
 const {rating,text} = req.body
 const doc = await Feedback.create({
 rating,

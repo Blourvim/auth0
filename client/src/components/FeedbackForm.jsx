@@ -4,17 +4,20 @@ import RatingSelect from './RatingSelect'
 import Card from './shared/Card'
 import Button from './shared/Button'
 import FeedbackContext from '../context/FeedbackContext'
+import { useAuth0 } from '../auth/react-auth0-spa'
 
 function FeedbackForm() {
   const [text, setText] = useState('')
   const [rating, setRating] = useState(10)
   const [btnDisabled, setBtnDisabled] = useState(true)
   const [message, setMessage] = useState('')
+  const { getTokenSilently } = useAuth0();
 
   const { addFeedback, feedbackEdit, updateFeedback } =
     useContext(FeedbackContext)
 
   useEffect(() => {
+
     if (feedbackEdit.edit === true) {
       setBtnDisabled(false)
       setText(feedbackEdit.item.text)
@@ -37,18 +40,20 @@ function FeedbackForm() {
     setText(e.target.value)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
+
     e.preventDefault()
+    const token = await getTokenSilently();
+
     if (text.trim().length > 10) {
       const newFeedback = {
         text,
         rating,
       }
-
       if (feedbackEdit.edit === true) {
-        updateFeedback(feedbackEdit.item._id, newFeedback)
+        updateFeedback(feedbackEdit.item._id, newFeedback,token)
       } else {
-        addFeedback(newFeedback)
+        addFeedback(newFeedback,token)
       }
 
       setText('')

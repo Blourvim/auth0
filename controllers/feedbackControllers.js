@@ -11,6 +11,7 @@ user:req.user._id
 res.json(doc)
 }
 export const getFeedbacks = async(req,res)=>{
+    console.log('yay')
     const docs = await Feedback.find({})
     res.json(docs)
 }
@@ -19,7 +20,7 @@ export const deleteFeedback = async(req,res)=>{
     const {_id}  = req.params;
     if (!req.user.admin){
         const docs = await Feedback.find({_id})
-        if(docs.user !== req.user._id) return res.status(200).send('Yetersiz İzin')
+        if(docs.user !== req.user._id) return res.status(401)
     } 
     const resonse = await Feedback.deleteOne({_id});
 
@@ -31,7 +32,7 @@ export const updateFeedback = async(req,res)=>{
     const {text,rating} = req.body;
     if (!req.user.admin){
         const docs = await Feedback.find({_id})
-        if(docs.user !== req.user._id) return res.status(200).send('Yetersiz İzin')
+        if(docs.user !== req.user._id) return res.status(401)
     } 
     const doc = await Feedback.updateOne(
         {_id},

@@ -14,7 +14,8 @@ import authenticated from './middleware/security.js';
 // CORS
 import cors from 'cors';
 const origin = process.env.CORS || 'http://localhost:3000';
-app.use(cors({ origin }));
+app.use(cors({ 
+  Origin:'http://localhost:3000' }));
 
 const PORT = process.env.PORT || 5000
 

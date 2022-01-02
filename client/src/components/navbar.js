@@ -19,8 +19,8 @@ const NavBar = () => {
         </li>
         {isAuthenticated && (
           <li className="menu__group">
-            <Link className="menu__link" to="/people">
-              People
+            <Link className="menu__link" to="/achivements">
+              Achivements
             </Link>
           </li>
         )}

@@ -47,7 +47,12 @@ const Achivements = () => {
     );
   }
 
-  return <>{achivements}</>;
+  return (
+  <>
+  {achivements && achivements.map((item)=>{
+    return <div>{item}</div>
+    })}
+  </>);
 };
 
 export default Achivements;

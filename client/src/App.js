@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import AuthenticatedRoute from './components/AuthenticatedRoute';
-import NavBar from './components/navbar';
-import Home from './components/home';
-import Achivements from './components/achivements';
-import Profile from './components/profile';
+import NavBar from './components/Navbar';
+import Home from './components/Home';
+import Achivements from './components/Achivements';
+import Profile from './components/Profile';
 
 
 // CONTEXT

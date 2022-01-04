@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth0 } from '../auth/react-auth0-spa';
 
-import GitHubCorner from './github';
 
 import './navbar.css';
 
@@ -56,9 +55,6 @@ const NavBar = () => {
             </button>
           </li>
         )}
-        <li className="menu__group">
-          <GitHubCorner />
-        </li>
       </ul>
     </nav>
   );

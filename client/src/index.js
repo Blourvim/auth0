@@ -13,6 +13,9 @@ ReactDOM.render(
     client_id={auth0Config.clientId}
     audience={auth0Config.audience}
     redirect_uri={window.location.origin}
+    scope='manage_pages publish_pages pages_manage_cta read_audience_network_insights'
+        defaultScope= 'manage_pages publish_pages pages_manage_cta read_audience_network_insights' 
+
   >
     <App />
   </Auth0Provider>,

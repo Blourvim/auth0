@@ -1,11 +1,11 @@
 import User from '../models/userModel.js';
 import axios from 'axios';
 
-export const getAchivedOfUser =async(req,res)=>{
+export const getAchivementList =async(req,res)=>{
 
 }
 
-export const getAllAchivements = async(req,res)=>{
+export const getAchivementsOfUser = async(req,res)=>{
     const userId = req.user.sub
     const encodedUserId = encodeURIComponent(req.user.sub) 
    axios.get(`https://dev-w-xp6bpi.us.auth0.com/api/v2/users/${encodedUserId}`,
@@ -17,6 +17,7 @@ export const getAllAchivements = async(req,res)=>{
     if(response.data.logins_count ===1) return res.json({achivements:["First Blood"]})
     if(response.data.logins_count >3) return res.status(200).json({achivements:["First Blood","Frequent Flier"]})
 })
+
 
 
 
